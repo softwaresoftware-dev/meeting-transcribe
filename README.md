@@ -4,7 +4,7 @@ Record meeting audio output and transcribe it — live rolling transcript in the
 
 Install: `/softwaresoftware:install meeting-transcribe`
 
-Skills: `/meeting-transcribe:record` (start/verify/stop capture + live transcript), `/meeting-transcribe:finalize` (large-v3 re-transcription).
+Skills: `/meeting-transcribe:record` (start/verify/stop capture + live transcript), `/meeting-transcribe:finalize` (large-v3 re-transcription), `/meeting-transcribe:distill` (transcript → knowledge base — mindframe vault aware).
 
 | OS | Capture | Prerequisite |
 |----|---------|--------------|
