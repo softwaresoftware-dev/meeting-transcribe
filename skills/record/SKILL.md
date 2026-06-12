@@ -25,7 +25,7 @@ Also everywhere: `uv` and `ffmpeg` on PATH (ffmpeg only needed for the Opus reco
    - Linux: `pactl list sink-inputs` → match the meeting app (browser/zoom/teams) to its sink; `pactl list sinks short` for the node name → `MEETING_SINK`.
    - Windows: nothing to find — the script loopbacks the default speaker.
    - macOS: confirm a BlackHole-style device exists and the meeting audio is routed through it → `MEETING_DEVICE` (default "BlackHole").
-2. **Start the capture daemon** via the daemon capability (daemon-manager `daemon_start`), or `systemd-run --user --collect` on Linux if no daemon provider is installed. Command:
+2. **Start the capture daemon**: register and start it via the daemon capability — use an available daemon skill or tool. If no daemon tool is available, fall back to `systemd-run --user --collect` on Linux. Command:
    `uv run ${CLAUDE_PLUGIN_ROOT}/scripts/live_transcribe.py`
    with env:
    - `MEETING_SINK` / `MEETING_DEVICE` per platform
@@ -46,7 +46,7 @@ Copy the in-progress .opus (it's streamable mid-write, lagging up to ~1 min), th
 
 ## Stop
 
-Stop the daemon (daemon capability `daemon_stop`, or `systemctl --user stop <unit>`). The Opus file is valid even when killed mid-write; segments persist in the JSONL. Offer `/meeting-transcribe:finalize` for the high-quality transcript.
+Stop the daemon via the daemon capability — use an available skill or tool (`systemctl --user stop <unit>` as the Linux fallback). The Opus file is valid even when killed mid-write; segments persist in the JSONL. Offer `/meeting-transcribe:finalize` for the high-quality transcript.
 
 ## Troubleshooting
 
@@ -54,4 +54,4 @@ Stop the daemon (daemon capability `daemon_stop`, or `systemctl --user stop <uni
 - Linux zero-byte capture → you used the PulseAudio shim; use pw-record (the script does).
 - macOS records silence → meeting audio isn't routed through BlackHole; fix the Multi-Output Device.
 - Port busy → restart with a different `MEETING_PORT` and tell the user the URL changed.
-- Daemon died → check its logs via the daemon provider; first-run model download is a delay, not a failure.
+- Daemon died → check its logs via the daemon capability's status tooling; first-run model download is a delay, not a failure.
