@@ -33,3 +33,4 @@ Gotchas (these WILL bite):
 
 1. Copy the .txt next to the recording as `<name>-transcript.txt`.
 2. Offer to correct any notes that were taken from the rough live transcript — proper nouns and numbers are where the live model fails and large-v3 shines. Grep the new transcript for the uncertain names before asserting corrections.
+3. If `~/.mindframe/vault` exists, offer to distill the transcript into the vault: "Vault detected — run `/meeting-transcribe:distill` to extract decisions, people, and project notes into the knowledge base?"
