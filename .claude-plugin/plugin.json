@@ -1,0 +1,33 @@
+{
+  "name": "meeting-transcribe",
+  "description": "Record meeting audio output and transcribe it — live rolling transcript in the browser plus a high-quality final transcript. Captures what you hear (the meeting), not your microphone.",
+  "version": "0.1.0",
+  "author": {
+    "name": "NOV LLC",
+    "url": "https://github.com/softwaresoftware-dev"
+  },
+  "repository": "https://github.com/softwaresoftware-dev/meeting-transcribe",
+  "license": "MIT",
+  "keywords": [
+    "meeting",
+    "transcription",
+    "recording",
+    "whisper",
+    "audio",
+    "provider"
+  ],
+  "userConfig": {
+    "recordings_dir": {
+      "title": "Recordings Directory",
+      "description": "Where meeting recordings and transcripts are saved",
+      "type": "directory",
+      "default": "~/recordings"
+    },
+    "live_model": {
+      "title": "Live Transcription Model",
+      "description": "faster-whisper model for the live transcript (base.en = fast, small.en = better)",
+      "type": "string",
+      "default": "base.en"
+    }
+  }
+}
